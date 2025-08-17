@@ -6,29 +6,34 @@ const bodyParser = require('body-parser');
 
 require('dotenv').config();
 
-const {authRouter} = require('./routers');
-const bannerRouter = require('./routers/bannerRouter.js');
-const categoryRouter = require('./routers/categoryRouter.js');
+const {authRouter,bannerRouter,categoryRouter,subCategoryRouter} = require('./routers');
 const connectMongodb = require('./database/db.js');
+const {errorHandler} = require('./middlewares');
+const notFoundController = require('./controllers/notFoundController.js');
 
 const app = express();
 
-app.use(express.json({limit:"500mb"}))
-app.use(bodyParser.urlencoded({limit: "500mb",extended: true}))
+
 
 //Connect to Database
 connectMongodb();
 
+//third-party middleware
+app.use(express.json({limit:"500mb"}))
+app.use(bodyParser.urlencoded({limit: "500mb",extended: true}))
 
 
+//Route Seaction
 app.use('/api/v1/auth',authRouter);
 app.use('/api/v1/banner',bannerRouter);
 app.use('/api/v1/category',categoryRouter);
+app.use('/api/v1/subCategory',subCategoryRouter);
 
+//not found Route
+app.use(notFoundController);
 
-// //Run Server
-// app.listen(process.env.PORT,"0.0.0.0",() => {
-//     console.log(`Server is running at PORT ${process.env.PORT}`);
-// });
+//error handler middleware
+app.use(errorHandler);
+
 
 module.exports = app;

@@ -1,16 +1,12 @@
 const mongoose = require("mongoose");
 
-const categorySchema = mongoose.Schema(
+const memberTokenSchema = mongoose.Schema(
   {
-    name: {
+    page_id: {
       type: String,
       required: true,
     },
-    image: {
-      type: String,
-      required: true,
-    },
-    description: {
+    exprie_date: {
       type: String,
       required: true,
     },
@@ -20,6 +16,6 @@ const categorySchema = mongoose.Schema(
   }
 );
 
-const Category = mongoose.model("Category", categorySchema);
+const Category = mongoose.model("MemberToken", memberTokenSchema);
 
 module.exports = Category;

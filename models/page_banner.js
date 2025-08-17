@@ -1,6 +1,10 @@
 const mogoose = require('mongoose');
 
-const bannerSchema =mogoose.Schema({
+const pageBannerSchema =mogoose.Schema({
+    page_id:{
+        type:String,
+        required: true,
+    },
     link:{
         type:String,
         required:true,
@@ -14,6 +18,6 @@ const bannerSchema =mogoose.Schema({
     timestamps: true,
 })
 
-const Banner = mogoose.model('Banner',bannerSchema);
+const PageBanner = mogoose.model('PageBanner',pageBannerSchema);
 
-module.exports = Banner;
+module.exports = Page;

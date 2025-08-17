@@ -1,10 +1,16 @@
 const mongoose = require("mongoose");
 
-const userSchema = new mongoose.Schema(
+const pageSchema = mongoose.Schema(
   {
+    user_id:{
+      type: String,
+      required: true,
+      trim: true,
+    },
     name: {
       type: String,
       required: true,
+      trim: true,
     },
 
     email: {
@@ -25,42 +31,63 @@ const userSchema = new mongoose.Schema(
 
     phone: {
       type: String,
+      default: "",
+      required:true,
       unique: true,
       trim: true,
     },
 
-    pf_pictures: [
-      {
-        type: String,
-        required: false,
-      },
+    id_card_img:{
+      type: String,
+      required:true,
+      unique: true,
+      trim: true,
+    },
+
+    id_card_id:{
+      type: String,
+      required:true,
+      unique: true,
+      trim: true,
+    },
+
+    id_card_name:{
+      type: String,
+      required:true,
+    },
+
+    page_pictures: [
+        {
+            type: String,
+            required: false,
+        }
     ],
 
-    gender: {
-      type: String,
-      enum: ["MALE", "FEMALE", "GAY", "OTHERS"],
-      default: "OTHERS",
-    },
-
-    birthday: {
+    social_link: {
       type: String,
       default: "",
     },
 
-    bio: {
+    about: {
       type: String,
       default: "",
     },
 
-    role: {
+    type:{
       type: String,
-      enum: ["OWNER", "ADMIN", "USER"],
-      default: "USER",
+      enum: ["ECOMMERCE", "RESTAURANT"],
+      default: "ECOMMERCE",
+    },
+
+    tamplate:{
+      type: Number,
+      required:true,
+      default: 1,
     },
 
     status: {
       type: String,
-      enum: ["NORMAL", "VERIFY", "WARNING", "SCAM"],
+      enum: ["NORMAL", "VERIFY", "WARNING", "SCAM",'BAN'],
       default: "NORMAL",
     },
 
@@ -74,7 +101,7 @@ const userSchema = new mongoose.Schema(
       default: "",
     },
 
-    street: {
+    locality: {
       type: String,
       default: "",
     },
@@ -101,14 +128,17 @@ const userSchema = new mongoose.Schema(
         message: "Password must be at least 8 characters long",
       },
     },
-    verificitionCode: String,
-    isVerified: { type: Boolean, default: false },
+
+    is_public: {
+        type:Boolean,
+        default:true,
+    }
   },
   {
     timestamps: true,
   }
 );
 
-const User = mongoose.model("User", userSchema);
+const Page = mongoose.model("Page", pageSchema);
 
-module.exports = User;
+module.exports = Page;

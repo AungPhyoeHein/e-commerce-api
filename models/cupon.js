@@ -1,16 +1,16 @@
 const mongoose = require("mongoose");
 
-const categorySchema = mongoose.Schema(
+const cuponSchema = mongoose.Schema(
   {
-    name: {
+    key: {
       type: String,
       required: true,
     },
-    image: {
+    page_id: {
       type: String,
       required: true,
     },
-    description: {
+    exprie_date: {
       type: String,
       required: true,
     },
@@ -20,6 +20,6 @@ const categorySchema = mongoose.Schema(
   }
 );
 
-const Category = mongoose.model("Category", categorySchema);
+const Cupon = mongoose.model("Cupon", cuponSchema);
 
-module.exports = Category;
+module.exports = Cupon;

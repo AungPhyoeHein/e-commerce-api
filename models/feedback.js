@@ -1,13 +1,14 @@
 const mongoose = require("mongoose");
 
-const categorySchema = mongoose.Schema(
+const reportSchema = mongoose.Schema(
   {
-    name: {
+    user_id: {
       type: String,
       required: true,
     },
-    image: {
+    rating: {
       type: String,
+      enum:[1,2,3,4,5],
       required: true,
     },
     description: {
@@ -20,6 +21,6 @@ const categorySchema = mongoose.Schema(
   }
 );
 
-const Category = mongoose.model("Category", categorySchema);
+const Report = mongoose.model("Report", reportSchema);
 
-module.exports = Category;
+module.exports = Report;

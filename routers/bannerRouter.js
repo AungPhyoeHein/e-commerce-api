@@ -1,5 +1,5 @@
 const express = require("express");
-const bannerController = require("../controllers/bannerController.js");
+const {bannerController} = require("../controllers");
 
 
 

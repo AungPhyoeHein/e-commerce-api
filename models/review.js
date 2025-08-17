@@ -1,13 +1,18 @@
 const mongoose = require("mongoose");
 
-const categorySchema = mongoose.Schema(
+const reviewSchema = mongoose.Schema(
   {
-    name: {
+    user_id: {
       type: String,
       required: true,
     },
-    image: {
+    page_id: {
       type: String,
+      required: true,
+    },
+    rating: {
+      type: String,
+      enum:[1,2,3,4,5],
       required: true,
     },
     description: {
@@ -20,6 +25,6 @@ const categorySchema = mongoose.Schema(
   }
 );
 
-const Category = mongoose.model("Category", categorySchema);
+const Review = mongoose.model("Review", reviewSchema);
 
-module.exports = Category;
+module.exports = Review;

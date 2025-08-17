@@ -1,7 +1,11 @@
 const mongoose = require("mongoose");
 
-const categorySchema = mongoose.Schema(
+const privateCategorySchema = mongoose.Schema(
   {
+    page_id: {
+      type: String,
+      required: true,
+    },
     name: {
       type: String,
       required: true,
@@ -20,6 +24,9 @@ const categorySchema = mongoose.Schema(
   }
 );
 
-const Category = mongoose.model("Category", categorySchema);
+const PrivateCategory = mongoose.model(
+  "PrivateCategory",
+  privateCategorySchema
+);
 
-module.exports = Category;
+module.exports = PrivateCategory;
