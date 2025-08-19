@@ -14,6 +14,6 @@ const bannerSchema =mogoose.Schema({
     timestamps: true,
 })
 
-const Banner = mogoose.model('Banner',bannerSchema);
+const Banner = mogoose.model('banners',bannerSchema);
 
 module.exports = Banner;

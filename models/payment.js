@@ -1,26 +1,30 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const orderSchema = mongoose.Schema({
-    user_id:  {
-        type:String,
-        required: true,
+const paymentSchema = mongoose.Schema(
+  {
+    user_id: {
+      type: mongoose.Schema.ObjectId,
+      required: true,
+      ref: "users",
     },
-    cart_id:  {
-        type:String,
-        required: true,
+    cart_id: {
+      type: mongoose.Schema.ObjectId,
+      required: true,
+      ref: "carts",
     },
-    total_price:{
+    total_price: {
       type: Number,
-      required:true,
+      required: true,
     },
     discount_price: {
-        type:Number,
+      type: Number,
     },
-},
-{
+  },
+  {
     timestamps: true,
-})
+  }
+);
 
-const Order = mongoose.model('Order',orderSchema);
+const Payment = mongoose.model("payments", paymentSchema);
 
-module.exports = Order;
+module.exports = Payment;

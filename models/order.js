@@ -3,12 +3,14 @@ const mongoose = require("mongoose");
 const orderSchema = mongoose.Schema(
   {
     user_id: {
-      type: String,
+      type: mongoose.Schema.ObjectId,
       required: true,
+      ref: "users",
     },
     cart_id: {
-      type: String,
+      type: mongoose.Schema.ObjectId,
       required: true,
+      ref: "carts",
     },
     status: {
       type: Number,
@@ -36,6 +38,8 @@ const orderSchema = mongoose.Schema(
   }
 );
 
-const Order = mongoose.model("Order", orderSchema);
+orderSchema.index({ user_id: 1 });
+
+const Order = mongoose.model("orders", orderSchema);
 
 module.exports = Order;

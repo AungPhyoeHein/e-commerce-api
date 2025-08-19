@@ -2,15 +2,14 @@ const Banner = require("../models/banner.js");
 
 const create = async (req, res, next) => {
   try {
-    if (
-      req.link == null ||
-      req.link.length <= 0 ||
-      req.image == null ||
-      req.link.image <= 0
-    ) {
-      return res.status(400).json({
-        msg: "Image and Link are should not be null.",
-      });
+    if (req.link == null || req.link.length <= 0) {
+      res.code = 400;
+      throw new Error("Image required.");
+    }
+
+    if (req.image == null || req.link.image <= 0) {
+      res.code = 400;
+      throw new Error("Link required.");
     }
     const { link, image } = req.body;
     const banner = await new Banner({ link, image });

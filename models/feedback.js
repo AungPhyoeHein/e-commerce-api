@@ -3,12 +3,13 @@ const mongoose = require("mongoose");
 const reportSchema = mongoose.Schema(
   {
     user_id: {
-      type: String,
+      type: mongoose.Schema.ObjectId,
       required: true,
+      ref: "users",
     },
     rating: {
       type: String,
-      enum:[1,2,3,4,5],
+      enum: [1, 2, 3, 4, 5],
       required: true,
     },
     description: {
@@ -21,6 +22,6 @@ const reportSchema = mongoose.Schema(
   }
 );
 
-const Report = mongoose.model("Report", reportSchema);
+const Feedback = mongoose.model("feedbacks", reportSchema);
 
-module.exports = Report;
+module.exports = Feedback;

@@ -2,9 +2,10 @@ const mongoose = require("mongoose");
 
 const pageSchema = mongoose.Schema(
   {
-    user_id:{
-      type: String,
+    user_id: {
+      type: mongoose.Schema.ObjectId,
       required: true,
+      ref: "users",
       trim: true,
     },
     name: {
@@ -32,35 +33,35 @@ const pageSchema = mongoose.Schema(
     phone: {
       type: String,
       default: "",
-      required:true,
+      required: true,
       unique: true,
       trim: true,
     },
 
-    id_card_img:{
+    id_card_img: {
       type: String,
-      required:true,
+      required: true,
       unique: true,
       trim: true,
     },
 
-    id_card_id:{
+    id_card_id: {
       type: String,
-      required:true,
+      required: true,
       unique: true,
       trim: true,
     },
 
-    id_card_name:{
+    id_card_name: {
       type: String,
-      required:true,
+      required: true,
     },
 
     page_pictures: [
-        {
-            type: String,
-            required: false,
-        }
+      {
+        type: String,
+        required: false,
+      },
     ],
 
     social_link: {
@@ -73,21 +74,21 @@ const pageSchema = mongoose.Schema(
       default: "",
     },
 
-    type:{
+    type: {
       type: String,
       enum: ["ECOMMERCE", "RESTAURANT"],
       default: "ECOMMERCE",
     },
 
-    tamplate:{
+    tamplate: {
       type: Number,
-      required:true,
+      required: true,
       default: 1,
     },
 
     status: {
       type: String,
-      enum: ["NORMAL", "VERIFY", "WARNING", "SCAM",'BAN'],
+      enum: ["NORMAL", "VERIFY", "WARNING", "SCAM", "BAN"],
       default: "NORMAL",
     },
 
@@ -130,15 +131,15 @@ const pageSchema = mongoose.Schema(
     },
 
     is_public: {
-        type:Boolean,
-        default:true,
-    }
+      type: Boolean,
+      default: true,
+    },
   },
   {
     timestamps: true,
   }
 );
 
-const Page = mongoose.model("Page", pageSchema);
+const Page = mongoose.model("pages", pageSchema);
 
 module.exports = Page;

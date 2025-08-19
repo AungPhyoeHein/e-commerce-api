@@ -1,14 +1,15 @@
 const mongoose = require("mongoose");
 
-const cuponSchema = mongoose.Schema(
+const privateAccessTokenSchema = mongoose.Schema(
   {
     key: {
       type: String,
       required: true,
     },
     page_id: {
-      type: String,
+      type: mongoose.Schema.ObjectId,
       required: true,
+      ref: "pages",
     },
     exprie_date: {
       type: String,
@@ -20,6 +21,9 @@ const cuponSchema = mongoose.Schema(
   }
 );
 
-const Cupon = mongoose.model("cupons", cuponSchema);
+const PrivateAccessToken = mongoose.model(
+  "privateaccesstokens",
+  privateAccessTokenSchema
+);
 
-module.exports = Cupon;
+module.exports = PrivateAccessToken;

@@ -3,12 +3,14 @@ const mongoose = require("mongoose");
 const reportSchema = mongoose.Schema(
   {
     user_id: {
-      type: String,
+      type: mongoose.Schema.ObjectId,
       required: true,
+      ref: "users",
     },
     page_id: {
-      type: String,
+      type: mongoose.Schema.ObjectId,
       required: true,
+      ref: "pages",
     },
     description: {
       type: String,
@@ -20,6 +22,8 @@ const reportSchema = mongoose.Schema(
   }
 );
 
-const Report = mongoose.model("Report", reportSchema);
+reportSchema.index({ page_id: 1 });
+
+const Report = mongoose.model("reports", reportSchema);
 
 module.exports = Report;

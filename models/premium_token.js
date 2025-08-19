@@ -7,8 +7,9 @@ const premiumTokenSchema = mongoose.Schema(
       required: true,
     },
     page_id: {
-      type: String,
+      type: mongoose.Schema.ObjectId,
       required: true,
+      ref: "pages",
     },
     exprie_date: {
       type: String,
@@ -20,6 +21,6 @@ const premiumTokenSchema = mongoose.Schema(
   }
 );
 
-const PremiumToken = mongoose.model("PremiumToken", premiumTokenSchema);
+const PremiumToken = mongoose.model("premiumtokens", premiumTokenSchema);
 
 module.exports = PremiumToken;

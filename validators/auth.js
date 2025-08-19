@@ -14,6 +14,19 @@ const signupValidator = [
     .withMessage("Password is required"),
 ];
 
+const signinvalidator = [
+  check("email")
+    .isEmail()
+    .withMessage("Invalid email.")
+    .notEmpty()
+    .withMessage("Email is required."),
+  check("password")
+    .isLength({ min: 6 })
+    .withMessage("Password should be 6 char length.")
+    .notEmpty()
+    .withMessage("Password is required"),
+];
+
 const emailValidator = [
   check("email")
     .isEmail()
@@ -22,4 +35,4 @@ const emailValidator = [
     .withMessage("Email is required."),
 ];
 
-module.exports = { signupValidator, emailValidator };
+module.exports = { signupValidator,signinvalidator, emailValidator };

@@ -2,17 +2,17 @@ const Category = require("../models/category.js");
 
 const create = async (req, res, next) => {
   try {
-    if (
-      req.name == null ||
-      req.name.length <= 0 ||
-      req.image == null ||
-      req.image.length <= 0 ||
-      req.banner == null ||
-      req.banner.length <= 0
-    ) {
-      return res
-        .status(400)
-        .json({ msg: "Name,Image and Banner should not be empty." });
+    if (req.name == null || req.name.length <= 0) {
+      res.code = 400;
+      throw new Error("Name required.");
+    }
+    if (req.image == null || req.image.length <= 0) {
+      res.code = 400;
+      throw new Error("Image required.");
+    }
+    if (req.banner == null || req.banner.length <= 0) {
+      res.code = 400;
+      throw new Error("Banner required.");
     }
     const { name, image, banner } = req.body;
     const category = await Category({ name, image, banner });

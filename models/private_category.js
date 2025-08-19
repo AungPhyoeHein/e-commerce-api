@@ -3,8 +3,9 @@ const mongoose = require("mongoose");
 const privateCategorySchema = mongoose.Schema(
   {
     page_id: {
-      type: String,
+      type: mongoose.Schema.ObjectId,
       required: true,
+      ref: "pages",
     },
     name: {
       type: String,
@@ -25,7 +26,7 @@ const privateCategorySchema = mongoose.Schema(
 );
 
 const PrivateCategory = mongoose.model(
-  "PrivateCategory",
+  "privatecategories",
   privateCategorySchema
 );
 

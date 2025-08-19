@@ -25,6 +25,8 @@ const reviewSchema = mongoose.Schema(
   }
 );
 
-const Review = mongoose.model("Review", reviewSchema);
+reviewSchema.index({page_id:1});
+
+const Review = mongoose.model("reviews", reviewSchema);
 
 module.exports = Review;

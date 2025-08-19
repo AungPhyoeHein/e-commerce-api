@@ -3,8 +3,9 @@ const mongoose = require("mongoose");
 const productSchema = mongoose.Schema(
   {
     page_id: {
-      type: String,
+      type: mongoose.Schema.ObjectId,
       required: true,
+      ref: "pages",
     },
     title: {
       type: String,
@@ -21,12 +22,15 @@ const productSchema = mongoose.Schema(
       required: true,
     },
     category: {
-      type: String,
+      type: mongoose.Schema.ObjectId,
       required: true,
+      ref: "categories",
     },
+
     subcategory: {
-      type: String,
+      type: mongoose.Schema.ObjectId,
       required: true,
+      ref: "subcategories",
     },
 
     price: {
@@ -34,7 +38,7 @@ const productSchema = mongoose.Schema(
       required: true,
     },
     discount_price: {
-        type:Number,
+      type: Number,
     },
     colors: [
       {
@@ -58,6 +62,8 @@ const productSchema = mongoose.Schema(
   }
 );
 
-const Product = mongoose.model("Product", productSchema);
+productSchema.index({ tags: 1, category: 1, subcategory: 1, page_id: 1 });
+
+const Product = mongoose.model("products", productSchema);
 
 module.exports = Product;

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const memberSchema = mongoose.Schema({
+const privateAccessSchema = mongoose.Schema({
     key:  {
         type:String,
         required: true,
@@ -18,6 +18,6 @@ const memberSchema = mongoose.Schema({
     timestamps: true,
 })
 
-const Member = mongoose.model('Member',memberSchema);
+const PrivateAccess = mongoose.model('privateaccess',memberSchema);
 
-module.exports = Member;
+module.exports = PrivateAccess;

@@ -1,56 +1,61 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const privateProductSchema = mongoose.Schema({
+const privateProductSchema = mongoose.Schema(
+  {
     page_id: {
-        type:String,
-        required: true,
+      type: mongoose.Schema.ObjectId,
+      required: true,
+      ref: "pages",
     },
-    title:{
-        type:String,
-        required: true,
+    title: {
+      type: String,
+      required: true,
     },
-    images:[
-        {
-            type:String,
-            required:true,
-        }
+    images: [
+      {
+        type: String,
+        required: true,
+      },
     ],
-    description:{
-        type:String,
-        required: true,
+    description: {
+      type: String,
+      required: true,
     },
-    category:{
-        type:String,
-        required: true,
+    category: {
+      type: String,
+      required: true,
     },
-    subcategory:{
-        type:String,
-        required: true,
+    subcategory: {
+      type: String,
+      required: true,
     },
-    price:{
-        type:Number,
-        required:true,
+    price: {
+      type: Number,
+      required: true,
     },
-    size:[
-        {
-            type:String,
-        }
+    size: [
+      {
+        type: String,
+      },
     ],
-    colors:[
-        {
-            type:String,
-        }
+    colors: [
+      {
+        type: String,
+      },
     ],
-    tags:[
-        {
-            type:String,
-        }
+    tags: [
+      {
+        type: String,
+      },
     ],
-},
-{
+  },
+  {
     timestamps: true,
-})
+  }
+);
 
-const PrivateProduct = mongoose.model('PrivateProduct',privateProductSchema);
+privateProductSchema.index({ page_id: 1 });
+
+const PrivateProduct = mongoose.model("privateproducts", privateProductSchema);
 
 module.exports = PrivateProduct;
