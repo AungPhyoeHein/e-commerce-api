@@ -10,6 +10,6 @@ const router = express.Router();
 
 router.post("/signup",signupValidator,validate, authController.signUp);
 router.post("/signin",signinvalidator,validate, authController.signIn);
-router.post("send-verification-email",authController.verifyCode);
+router.post("/send-verification-email",authController.verifyCode);
 
 module.exports = router;

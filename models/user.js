@@ -26,7 +26,13 @@ const userSchema = new mongoose.Schema(
     phone: {
       type: String,
       unique: true,
-      trim: true,
+      sparse: true,
+      validate: {
+        validator: function (v) {
+          return v === null || v === "" || /^[0-9]{10,15}$/.test(v);
+        },
+        message: (props) => `${props.value} is not a valid phone number!`,
+      },
     },
 
     pf_pictures: [

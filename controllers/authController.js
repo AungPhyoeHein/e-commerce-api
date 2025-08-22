@@ -4,6 +4,7 @@ const User = require("../models/user.js");
 const hashPassword = require("../utils/hashPassword.js");
 const generateToken = require("../utils/generateToken.js");
 const comparePassword = require("../utils/comparePassword.js");
+const nodemail = require("nodemailer");
 
 const signUp = async (req, res, next) => {
   try {
@@ -60,7 +61,27 @@ const signIn = async (req, res, next) => {
 
 const verifyCode=async(req,res,next)=>{
   try {
-    
+    const {email}=req.body;
+
+    const code=484774;
+    const transporter=nodemail.createTransport({
+      host:"smtp.gmail.com",
+      port:587,
+      secure:false,
+      auth:{
+        user:"aphyoe5521@gmail.com",
+        pass:"uqmekgqkjbubfvcs"
+      }
+    })
+
+    const message={
+      to:email,
+      subject:'Bagan',
+      html:`<div><h3>Code:${code}</h3></div>`
+    }
+
+    const result=await transporter.sendMail(message);
+    res.status(200).json({msg:'Success',data:result});
   } catch (err) {
     next(err);
   }

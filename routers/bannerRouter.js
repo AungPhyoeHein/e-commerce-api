@@ -6,7 +6,7 @@ const authMiddleware = require("../middlewares/authMiddleware");
 
 const bannerRouter = express.Router();
 
-bannerRouter.post("/", bannerController.create);
-bannerRouter.get("/",authMiddleware, bannerController.get);
+bannerRouter.post("/",authMiddleware, bannerController.create);
+bannerRouter.get("/", bannerController.get);
 
 module.exports = bannerRouter;

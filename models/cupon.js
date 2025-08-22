@@ -7,8 +7,9 @@ const cuponSchema = mongoose.Schema(
       required: true,
     },
     page_id: {
-      type: String,
+      type: mongoose.Schema.ObjectId,
       required: true,
+      ref: "pages",
     },
     exprie_date: {
       type: String,
