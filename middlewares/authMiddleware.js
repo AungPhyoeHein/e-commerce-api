@@ -9,7 +9,6 @@ const authMiddleware = async (req, res, next) => {
       authorization != undefined && authorization.length > 1
         ? authorization[1]
         : null;
-    console.log(req.header);
     if (token) {
       const payload = jwt.verify(token, jwt_secret);
       if (payload) {

@@ -1,0 +1,33 @@
+Message : E11000 duplicate key error collection: ecommerce_shop.users index: phone_1 dup key: { phone: null }
+URL Path: /api/v1/auth/signup
+Stack : MongoServerError: E11000 duplicate key error collection: ecommerce_shop.users index: phone_1 dup key: { phone: null }
+    at InsertOneOperation.execute (/home/jerry/Desktop/Server_Projects/NodeJs/back_end_ecommerce/node_modules/mongodb/lib/operations/insert.js:51:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (/home/jerry/Desktop/Server_Projects/NodeJs/back_end_ecommerce/node_modules/mongodb/lib/operations/execute_operation.js:207:20)
+    at async executeOperation (/home/jerry/Desktop/Server_Projects/NodeJs/back_end_ecommerce/node_modules/mongodb/lib/operations/execute_operation.js:75:16)
+    at async Collection.insertOne (/home/jerry/Desktop/Server_Projects/NodeJs/back_end_ecommerce/node_modules/mongodb/lib/collection.js:157:16)
+
+
+
+Message : E11000 duplicate key error collection: ecommerce_shop.users index: phone_1 dup key: { phone: null }
+URL Path: /api/v1/auth/signup
+Stack : MongoServerError: E11000 duplicate key error collection: ecommerce_shop.users index: phone_1 dup key: { phone: null }
+    at InsertOneOperation.execute (/home/jerry/Desktop/Server_Projects/NodeJs/back_end_ecommerce/node_modules/mongodb/lib/operations/insert.js:51:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (/home/jerry/Desktop/Server_Projects/NodeJs/back_end_ecommerce/node_modules/mongodb/lib/operations/execute_operation.js:207:20)
+    at async executeOperation (/home/jerry/Desktop/Server_Projects/NodeJs/back_end_ecommerce/node_modules/mongodb/lib/operations/execute_operation.js:75:16)
+    at async Collection.insertOne (/home/jerry/Desktop/Server_Projects/NodeJs/back_end_ecommerce/node_modules/mongodb/lib/collection.js:157:16)
+
+
+
+Message : E11000 duplicate key error collection: ecommerce_shop.users index: phone_1 dup key: { phone: null }
+URL Path: /api/v1/auth/signup
+Stack : MongoServerError: E11000 duplicate key error collection: ecommerce_shop.users index: phone_1 dup key: { phone: null }
+    at InsertOneOperation.execute (/home/jerry/Desktop/Server_Projects/NodeJs/back_end_ecommerce/node_modules/mongodb/lib/operations/insert.js:51:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (/home/jerry/Desktop/Server_Projects/NodeJs/back_end_ecommerce/node_modules/mongodb/lib/operations/execute_operation.js:207:20)
+    at async executeOperation (/home/jerry/Desktop/Server_Projects/NodeJs/back_end_ecommerce/node_modules/mongodb/lib/operations/execute_operation.js:75:16)
+    at async Collection.insertOne (/home/jerry/Desktop/Server_Projects/NodeJs/back_end_ecommerce/node_modules/mongodb/lib/collection.js:157:16)
+
+
+

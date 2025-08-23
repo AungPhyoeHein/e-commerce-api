@@ -5,6 +5,7 @@ const userSchema = new mongoose.Schema(
     name: {
       type: String,
       required: true,
+      trim: true,
     },
 
     email: {
@@ -14,9 +15,8 @@ const userSchema = new mongoose.Schema(
       unique: true,
       validate: {
         validator: (value) => {
-          //email validate
           const result =
-            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
           return result.test(value);
         },
         message: "Please enter a valid email address",
@@ -25,22 +25,19 @@ const userSchema = new mongoose.Schema(
 
     phone: {
       type: String,
+      default: null,
       unique: true,
-      sparse: true,
+      sparse: true, //allow multiple nulls
       validate: {
         validator: function (v) {
-          return v === null || v === "" || /^[0-9]{10,15}$/.test(v);
+          // allow null OR valid 10-15 digits
+          return v === null || /^[0-9]{10,15}$/.test(v);
         },
         message: (props) => `${props.value} is not a valid phone number!`,
       },
     },
 
-    pf_pictures: [
-      {
-        type: String,
-        required: false,
-      },
-    ],
+    pf_pictures: [{ type: String }],
 
     gender: {
       type: String,
@@ -48,15 +45,8 @@ const userSchema = new mongoose.Schema(
       default: "OTHERS",
     },
 
-    birthday: {
-      type: String,
-      default: "",
-    },
-
-    bio: {
-      type: String,
-      default: "",
-    },
+    birthday: { type: String, default: "" },
+    bio: { type: String, default: "" },
 
     role: {
       type: String,
@@ -70,49 +60,26 @@ const userSchema = new mongoose.Schema(
       default: "NORMAL",
     },
 
-    state: {
-      type: String,
-      default: "",
-    },
-
-    city: {
-      type: String,
-      default: "",
-    },
-
-    street: {
-      type: String,
-      default: "",
-    },
-
-    lat: {
-      type: String,
-      default: "",
-    },
-
-    lon: {
-      type: String,
-      default: "",
-    },
+    state: { type: String, default: "" },
+    city: { type: String, default: "" },
+    street: { type: String, default: "" },
+    lat: { type: String, default: "" },
+    lon: { type: String, default: "" },
 
     password: {
       type: String,
       required: true,
-      minlength: 6,
+      minlength: 8,
       validate: {
-        validator: (value) => {
-          //check if password is at least 8 characters long.
-          return value.length > 6;
-        },
+        validator: (value) => value.length >= 8,
         message: "Password must be at least 8 characters long",
       },
     },
-    verificitionCode: String,
+
+    verificationCode: { type: String },
     isVerified: { type: Boolean, default: false },
   },
-  {
-    timestamps: true,
-  }
+  { timestamps: true }
 );
 
 const User = mongoose.model("users", userSchema);

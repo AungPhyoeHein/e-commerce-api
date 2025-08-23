@@ -10,6 +10,7 @@ const {authRouter,bannerRouter,categoryRouter,subCategoryRouter} = require('./ro
 const connectMongodb = require('./database/db.js');
 const {errorHandler} = require('./middlewares');
 const notFoundController = require('./controllers/notFoundController.js');
+const morgan = require('morgan');
 
 const app = express();
 
@@ -21,6 +22,7 @@ connectMongodb();
 //third-party middleware
 app.use(express.json({limit:"500mb"}))
 app.use(bodyParser.urlencoded({limit: "500mb",extended: true}))
+app.use(morgan("dev"))
 
 
 //Route Seaction
